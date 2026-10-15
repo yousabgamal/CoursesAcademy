@@ -45,7 +45,7 @@ A relational database system for a course academy, built with **SQL Server** and
 
 ### ERD
 
-![ERD]([Diagrams/ERD.png](https://github.com/yousabgamal/CoursesAcademy/blob/main/Diagrams/image.png))
+![ERD](https://github.com/yousabgamal/CoursesAcademy/blob/main/Diagrams/image.png)
 
 ## Project Structure
 
