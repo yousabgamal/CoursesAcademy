@@ -28,7 +28,7 @@ namespace CoursesAcademy.HelpingFunctions
                 }
                 catch(Exception ex)
                 {
-                    Console.WriteLine($"Error: {ex.Message}");
+                    Console.WriteLine($"Error: {ex.InnerException?.Message ?? ex.Message}");
                     statusFlag = false;
                 }
             }
@@ -52,7 +52,7 @@ namespace CoursesAcademy.HelpingFunctions
                 }
                 catch(Exception ex)
                 {
-                    Console.WriteLine($"Error: {ex.Message}");
+                    Console.WriteLine($"Error: {ex.InnerException?.Message ?? ex.Message}");
                     statusFlag = false;
                 }
             }
@@ -79,7 +79,7 @@ namespace CoursesAcademy.HelpingFunctions
                 }
                 catch(Exception ex)
                 {
-                    Console.WriteLine($"Error: {ex.Message}");
+                    Console.WriteLine($"Error: {ex.InnerException?.Message ?? ex.Message}");
                     statusFlag = false;
                 }
             }
@@ -97,12 +97,14 @@ namespace CoursesAcademy.HelpingFunctions
                 try
                 {
                     var student = context.Students.FirstOrDefault(s => s.Id == studentId);
+                    var enrollments = context.StudentTakeCourses.Where(e => e.StdId == studentId).ToList();
+                    context.StudentTakeCourses.RemoveRange(enrollments);
                     context.Students.Remove(student);
                     context.SaveChanges();
                 }
                 catch(Exception ex)
                 {
-                    Console.WriteLine($"Error: {ex.Message}");
+                    Console.WriteLine($"Error: {ex.InnerException?.Message ?? ex.Message}");
                     statusFlag = false;
                 }
             }
@@ -129,7 +131,7 @@ namespace CoursesAcademy.HelpingFunctions
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Error: {ex.Message}");
+                    Console.WriteLine($"Error: {ex.InnerException?.Message ?? ex.Message}");
                     statusFlag = false;
                 }
             }
